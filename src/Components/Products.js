@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import AuthModal from './AuthModal';
+import swal from 'sweetalert';
 
 class Products extends Component {
     constructor(props){
@@ -25,7 +26,7 @@ class Products extends Component {
                 product_id: id,
                 price
             }).then(res => {
-                window.alert('Item added to cart')
+                swal({title: 'Added to Cart!', icon: 'success'})
             }).catch(err => console.log(err));
         } else {
             this.handleToggle()

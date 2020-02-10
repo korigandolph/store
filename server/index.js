@@ -23,6 +23,7 @@ app.post('/auth/logout', authCtrl.logout);
 
 //products endpoints
 app.get('/api/products', cartCtrl.getProducts);
+app.delete('/api/product/:id', cartCtrl.deleteProduct)
 
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);
