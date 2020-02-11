@@ -9,6 +9,11 @@
   flex-wrap: wrap;
 }
 
+.Footer{
+  display: flex;
+  justify-content: center;
+}
+
 .product-container{
   width: 250px;
 }
