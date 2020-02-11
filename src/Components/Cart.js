@@ -33,6 +33,10 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
       }
 
+    //   editProduct =(id)=>{
+    //     this.props.history.push(`/form/${id}`)
+    //   }
+
     render(){
         const mappedCart = this.state.cart.map((product, i) => {
             // console.log(product.order_item_id)

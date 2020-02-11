@@ -42,7 +42,7 @@ class Products extends Component {
             return (
                <div key={i} className='product-container'>
                    <img src={product.product_image} alt={product.product_name} className='product-image'/>
-                    <p>{product.product_name}</p>
+                    <h2>{product.product_name}</h2>
                     <p>{product.product_description}</p>
                     <p>${product.price}</p>
                     <button onClick={() => this.addToCart(product.product_id, product.price)}>Add to Cart</button>

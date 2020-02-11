@@ -1,18 +1,38 @@
 .App {
   text-align: center;
-  background-color: rgb(254, 246, 246);
+  background-color:whitesmoke;
+}
+
+.mtn-pic{
+  height: 40vh;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+.about-words{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
 }
 
 .product-flex{
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-top: 30px;
 }
 
 .Footer{
   display: flex;
   justify-content: center;
+  background-color: rgb(230, 249, 235)
 }
+/* .button:hover{
+  background-color: rgb(230, 5, 5);
+} */
 
 .product-container{
   width: 250px;
@@ -31,7 +51,7 @@
 
 .Header{
   height: 5vh;
-  background-color: rgb(230, 244, 249);
+  background-color: rgb(230, 249, 235);
   display: flex;
   justify-content: space-around;
   align-items: center;
