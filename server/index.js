@@ -5,6 +5,7 @@ const express = require('express'),
       nodemailer = require('nodemailer'),
       cartCtrl = require('./controllers/cartController'),
       authCtrl = require('./controllers/authController'),
+      stripeCtrl = require('./controllers/stripeController'),
         {SERVER_PORT, 
         CONNECTION_STRING, 
         SESSION_SECRET, 
@@ -38,10 +39,14 @@ app.post('/auth/logout', authCtrl.logout);
 //products endpoints
 app.get('/api/products', cartCtrl.getProducts);
 app.delete('/api/product/:id', cartCtrl.deleteProduct)
+app.put('/api/product/:id', cartCtrl.editProduct)
 
 //cart endpoints
 app.get('/api/cart/:id', cartCtrl.getCart);
 app.post('/api/cart', cartCtrl.addToCart);
+
+//stripe
+app.post('/api/payment', stripeCtrl.pay);
 
 massive(CONNECTION_STRING).then(db=>{
     app.set('db', db)

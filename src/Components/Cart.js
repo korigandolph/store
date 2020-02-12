@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import AuthModal from './AuthModal';
 import swal from 'sweetalert';
-// import Product from './Product'
+import {Link} from 'react-router-dom';
 
 class Cart extends Component {
     constructor(props){
@@ -33,27 +33,30 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
       }
 
-    //   editProduct =(id)=>{
-    //     this.props.history.push(`/form/${id}`)
-    //   }
-
     render(){
         const mappedCart = this.state.cart.map((product, i) => {
             // console.log(product.order_item_id)
             return (
-               <div key={i} className='product-container'>
-                   <img src={product.product_image} alt={product.product_name} className='product-image'/>
-                    <p>{product.product_name}</p>
-                    <p>${product.price}</p>
-                    <p>qty: {product.qty}</p>
-                    <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
-               </div> 
+                <div>
+                    <div key={i} className='product-container'>
+                        <img src={product.product_image} alt={product.product_name} className='product-image'/>
+                            <p>{product.product_name}</p>
+                            <p>${product.price*(product.qty)}</p>
+                            <p>qty: {product.qty}</p>
+                            <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
+                    </div> 
+                    
+                </div>
             )
         })
         return (
             <div className='product-flex'>
                 {this.props.user.email
-                ? (<div>{mappedCart}</div>)
+                ? (<div>
+                    {mappedCart}
+                    <div>Total: </div>
+                    <Link to='/checkout'>Checkout</Link>
+                    </div>)
                 : (<AuthModal />)
                 }
                 
