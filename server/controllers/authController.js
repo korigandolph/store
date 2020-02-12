@@ -1,11 +1,20 @@
 const bcrypt = require('bcryptjs');
 
+const mailOptions ={
+    from: 'korigandolph@gmail.com',
+    to: '',
+    subject: 'Thanks for Registering',
+    text: 'Thank you for registering'
+}
+
 module.exports ={
     register: async(req, res)=>{
         const {email, password} = req.body,
                db = req.app.get('db'),
                {session}= req;
-        
+
+        const transporter= req.app.get('transporter')
+
         let user = await db.user.check_customer(email);
         if(user[0]){
             return res.status(400).send('Email already exists')
@@ -13,6 +22,15 @@ module.exports ={
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
         let newUser = await db.user.register_customer(email, hash)
+
+        let sendMailOptions = {...mailOptions, to: email}
+        transporter.sendMail(sendMailOptions, (err, data)=>{
+            if(err){
+                console.log('error occurs')
+            } else {
+                console.log('email sent')
+            }
+        })
 
         let userCart = await db.cart.create_order(newUser[0].customer_id);
         let sessionUser = {...newUser[0], ...userCart[0]};
