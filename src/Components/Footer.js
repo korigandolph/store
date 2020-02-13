@@ -18,7 +18,7 @@ class Footer extends Component{
     }
     render(){
         return(
-            <div className='form'>
+            <div className='footer'>
                 <h3>S U B S C R I B E</h3>
                 <input 
                 name='email'

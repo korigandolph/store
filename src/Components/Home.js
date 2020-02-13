@@ -4,7 +4,6 @@ import Products from './Products';
 
 const Home = ()=>(
     <div>
-        {/* <img /> */}
         <About/>
         <Products/>
     </div>

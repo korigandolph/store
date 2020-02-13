@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {getUser} from '../redux/reducer';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const AuthModal = props => {
     const [emailInput, setEmailInput]= useState('');
@@ -10,13 +11,15 @@ const AuthModal = props => {
     const login = ()=>{
         axios.post('/auth/login', {email: emailInput, password: passInput})
         .then(res=>props.getUser(res.data))
-        .catch(err=>console.log(err))
+        .catch(err=>swal({title: 'Incorrect username or password', icon: 'error'}))
     }
 
     const register = ()=>{
         axios.post('/auth/register', {email: emailInput, password: passInput})
         .then(res=>props.getUser(res.data))
-        .catch(err=>console.log(err))
+        .catch(err=>{
+            swal({title: 'User Already Exists', icon: 'error'})
+            console.log(err)})
     }
 
 

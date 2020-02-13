@@ -33,8 +33,8 @@ class Checkout extends Component {
     render(){
         return (
             <div>
-                <div>Order Summary: </div>
-                <div>Total Price: </div>
+                <h2>Order Summary: </h2>
+                <h2>Total Price: ${this.state.amount}.00</h2>
                 <StripeCheckout
                 value={this.state.amount}
                     name='Payment' 

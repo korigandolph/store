@@ -4,16 +4,22 @@ import axios from 'axios';
 import AuthModal from './AuthModal';
 import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
+import {FaShoppingBag} from 'react-icons/fa';
+import Checkout from './Checkout';
 
 class Cart extends Component {
     constructor(props){
         super(props);
         this.state={
-            cart:[]
+            cart:[],
+            amount: 0
         }
     }
 
     componentDidMount(){
+        this.getProducts()
+    }
+    componentDidUpdate(){
         this.getProducts()
     }
 
@@ -31,7 +37,8 @@ class Cart extends Component {
           this.setState({cart: results.data})
           swal({title: 'Removed from Cart!'})
         }).catch(err=>console.log(err))
-      }
+    }
+    
 
     render(){
         const mappedCart = this.state.cart.map((product, i) => {
@@ -41,8 +48,9 @@ class Cart extends Component {
                     <div key={i} className='product-container'>
                         <img src={product.product_image} alt={product.product_name} className='product-image'/>
                             <p>{product.product_name}</p>
-                            <p>${product.price*(product.qty)}</p>
+                            <p>${product.price*(product.qty)}.00</p>
                             <p>qty: {product.qty}</p>
+                            {/* <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button> */}
                             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
                     </div> 
                     
@@ -54,8 +62,8 @@ class Cart extends Component {
                 {this.props.user.email
                 ? (<div>
                     {mappedCart}
-                    <div>Total: </div>
-                    <Link to='/checkout'>Checkout</Link>
+                    <div>Total: ${this.state.amount}.00</div>
+                    <Link to='/checkout'><FaShoppingBag/>Checkout</Link>
                     </div>)
                 : (<AuthModal />)
                 }

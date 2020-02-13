@@ -2,6 +2,7 @@ const stripe = require('stripe')('sk_test_TJkQjaAJiu5APNxcEGOMBsnj00V5XCNjrK')
 
 module.exports = {
     pay:(req,res)=>{
+        const db = req.app.get('db')
         const {token:{id},amount} = req.body;
         console.log(id,amount,stripe)
         stripe.charges.create(
@@ -20,6 +21,7 @@ module.exports = {
 
                     return res.status(200).send(charge)
                 }
+               //add db
             }
         )
     },
