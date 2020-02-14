@@ -10,6 +10,14 @@
   text-align: center;
   /* opacity: 0.7; */
 }
+
+.bottom-of-cart{
+  padding: 10px;
+}
+
+.total{
+  padding: 10px;
+}
 .about-words{
   position: absolute;
   top: 25%;

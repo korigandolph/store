@@ -53,7 +53,6 @@ class Cart extends Component {
                             {/* <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button> */}
                             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
                     </div> 
-                    
                 </div>
             )
         })
@@ -62,8 +61,16 @@ class Cart extends Component {
                 {this.props.user.email
                 ? (<div>
                     {mappedCart}
-                    <div>Total: ${this.state.amount}.00</div>
+                    <hr></hr>
+                    <div className='bottom-of-cart'>
+
+                    <input 
+                    placeholder='Discount Code'
+                    />
+                    <button>Apply</button>
+                    <div className='total'>Subtotal: ${this.state.amount}.00</div>
                     <Link to='/checkout'><FaShoppingBag/>Checkout</Link>
+                    </div>
                     </div>)
                 : (<AuthModal />)
                 }
