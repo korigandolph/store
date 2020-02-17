@@ -15,13 +15,13 @@ class Cart extends Component {
             amount: 0
         }
     }
-
+    
     componentDidMount(){
         this.getProducts()
     }
-    componentDidUpdate(){
-        this.getProducts()
-    }
+    // componentDidUpdate(){
+    //     this.getProducts()
+    // }
 
     getProducts=()=>{
         axios.get(`/api/cart/${this.props.user.customer_order_id}`)
@@ -39,10 +39,9 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
     }
     
-
     render(){
         const mappedCart = this.state.cart.map((product, i) => {
-            // console.log(product.order_item_id)
+            
             return (
                 <div>
                     <div key={i} className='product-container'>
@@ -63,12 +62,13 @@ class Cart extends Component {
                     {mappedCart}
                     <hr></hr>
                     <div className='bottom-of-cart'>
-
                     <input 
                     placeholder='Discount Code'
                     />
                     <button>Apply</button>
-                    <div className='total'>Subtotal: ${this.state.amount}.00</div>
+                    <div className='total'>Subtotal: ${this.state.cart.reduce((total, element)=>{
+                        return total + +element.price    
+                    },0)}.00</div>
                     <Link to='/checkout'><FaShoppingBag/>Checkout</Link>
                     </div>
                     </div>)

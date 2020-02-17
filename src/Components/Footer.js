@@ -1,33 +1,25 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {FaInstagram, FaFacebookSquare} from 'react-icons/fa';
 import {FaTwitter} from 'react-icons/fa';
 
-class Footer extends Component{
-    constructor(props){
-        super(props)
+const Footer = props => {
+    const [emailInput, setEmailInput]= useState('');
 
-        this.state={
-            id: 0,
-            email: ''
-        };
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange({name, value}){
+    const handleChange=({name, value})=>{
         this.setState({[name]: value})
     }
-    render(){
+    
         return(
             <div className='footer'>
                 <h3>S U B S C R I B E</h3>
                 <input 
                 name='email'
-                value={this.state.email}
+                value={emailInput}
                 type='text'
                 placeholder='Enter Email Address'
-                onChange={(e) => this.handleChange(e.target)}
+                onChange={(e) => setEmailInput(e.target.value)}
                 />
-                <button className='button' onClick={console.log(this.state.email)}>submit</button>
+                <button className='button' onClick={console.log(emailInput)}>submit</button>
                 <div className='Footer'>
                     <h2><FaInstagram/> </h2>
                     <h2> <FaTwitter/></h2>
@@ -36,6 +28,5 @@ class Footer extends Component{
             </div>
         )
     }
-}
 
 export default Footer; 
