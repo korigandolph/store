@@ -1,21 +1,21 @@
 const initialState ={
-    user: {}
+    email: {}
 }
 
-const GET_USER='GET_USER';
+const GET_EMAIL='GET_EMAIL';
 
-export function getUser(userObj){
+export function getEmail(emailObj){
     return{
-        type: GET_USER,
-        payload: userObj
+        type: GET_EMAIL,
+        payload: emailObj
     }
 }
 
 export default function reducer(state = initialState,action){
     const {type, payload} = action;
     switch(type){
-        case GET_USER:
-            return{...state, user: payload}
+        case GET_EMAIL:
+            return{...state, email: payload}
         default:
             return state;
     }

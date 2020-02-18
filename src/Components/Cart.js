@@ -38,6 +38,11 @@ class Cart extends Component {
           swal({title: 'Removed from Cart!'})
         }).catch(err=>console.log(err))
     }
+
+    editProduct =(id)=>{
+        console.log(id)
+        
+    }
     
     render(){
         const mappedCart = this.state.cart.map((product, i) => {
@@ -49,7 +54,7 @@ class Cart extends Component {
                             <p>{product.product_name}</p>
                             <p>${product.price*(product.qty)}.00</p>
                             <p>qty: {product.qty}</p>
-                            {/* <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button> */}
+                            <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button>
                             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
                     </div> 
                 </div>

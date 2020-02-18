@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {FaInstagram, FaFacebookSquare} from 'react-icons/fa';
 import {FaTwitter} from 'react-icons/fa';
+import {getEmail} from '../redux/reducer';
+import {connect} from 'react-redux';
 
 const Footer = props => {
     const [emailInput, setEmailInput]= useState('');
@@ -29,4 +31,4 @@ const Footer = props => {
         )
     }
 
-export default Footer; 
+    export default connect(null, {getEmail})(Footer); 
