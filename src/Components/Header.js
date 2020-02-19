@@ -5,7 +5,7 @@ import {FaShoppingCart, FaSpa} from 'react-icons/fa';
 
 const Header = () => (
     <div className='Header'>
-        <Link to='/'><FaSpa /> Company</Link>
+        <Link to='/'><FaSpa />BEAUTYBOX</Link>
         <Link to='/products'>Products</Link>
         <Link to='/about'>About</Link>
         <Link to='/cart'><FaShoppingCart/></Link> 

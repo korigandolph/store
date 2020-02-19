@@ -20,7 +20,7 @@ class Products extends Component {
     }
 
     addToCart = (id, price) => {
-        if(this.props.user.email){
+        if(this.props.user && this.props.user.email){
             axios.post('/api/cart', {
                 customer_order_id: this.props.user.customer_order_id,
                 product_id: id,
@@ -60,8 +60,10 @@ class Products extends Component {
     }
 }
 
-const mapStateToProps = reduxState => {
-    return reduxState;
-}
+const mapStateToProps = reduxState=> {
+    const {user} = reduxState.userReducer
+    return {user}
+
+};
 
 export default connect(mapStateToProps)(Products);

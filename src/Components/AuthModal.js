@@ -10,7 +10,10 @@ const AuthModal = props => {
 
     const login = ()=>{
         axios.post('/auth/login', {email: emailInput, password: passInput})
-        .then(res=>props.getUser(res.data))
+        .then(res=>{
+            console.log(res)
+            props.getUser(res.data)
+        })
         .catch(err=>swal({title: 'Incorrect username or password', icon: 'error'}))
     }
 

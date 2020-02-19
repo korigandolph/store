@@ -5,7 +5,7 @@ import AuthModal from './AuthModal';
 import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 import {FaShoppingBag} from 'react-icons/fa';
-import Checkout from './Checkout';
+// import Checkout from './Checkout';
 
 class Cart extends Component {
     constructor(props){
@@ -39,12 +39,21 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
     }
 
-    editProduct =(id)=>{
-        console.log(id)
-        
+    // editProduct =(id)=>{
+    //     console.log(id)
+    //     this.props.history.push(`/product/${id}`)
+    // }
+
+    handleAddQuantity = (id)=>{
+        this.props.addQuantity(id);
     }
     
+    handleSubtractQuantity = (id)=>{
+        this.props.subtractQuantity(id);
+    }
+
     render(){
+        // console.log(this.props)
         const mappedCart = this.state.cart.map((product, i) => {
             
             return (
@@ -54,7 +63,11 @@ class Cart extends Component {
                             <p>{product.product_name}</p>
                             <p>${product.price*(product.qty)}.00</p>
                             <p>qty: {product.qty}</p>
-                            <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button>
+                            {/* <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button> */}
+                            <div className="add-remove">
+                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(product.order_item_id)}}>+</i></Link>
+                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(product.order_item_id)}}>-</i></Link>
+                                        </div>
                             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
                     </div> 
                 </div>
@@ -62,7 +75,8 @@ class Cart extends Component {
         })
         return (
             <div className='product-flex'>
-                {this.props.user.email
+
+                {this.props.user && this.props.user.email
                 ? (<div>
                     {mappedCart}
                     <hr></hr>
@@ -85,6 +99,10 @@ class Cart extends Component {
     }
 }
 
-const mapStateToProps = reduxState=> reduxState;
+// const mapStateToProps = reduxState=> reduxState;
+const mapStateToProps = reduxState=> {
+    const {user} = reduxState.userReducer
+    return {user}
 
+};
 export default connect(mapStateToProps)(Cart);
