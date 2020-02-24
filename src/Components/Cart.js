@@ -5,6 +5,7 @@ import AuthModal from './AuthModal';
 import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 import {FaShoppingBag} from 'react-icons/fa';
+import Edit from './Edit';
 // import Checkout from './Checkout';
 
 class Cart extends Component {
@@ -39,38 +40,32 @@ class Cart extends Component {
         }).catch(err=>console.log(err))
     }
 
-    // editProduct =(id)=>{
-    //     console.log(id)
-    //     this.props.history.push(`/product/${id}`)
-    // }
-
-    handleAddQuantity = (id)=>{
-        this.props.addQuantity(id);
-    }
-    
-    handleSubtractQuantity = (id)=>{
-        this.props.subtractQuantity(id);
+    editProduct =(product, qty)=>{
+        // console.log(id)
+        console.log(product)
+        axios.put(`/api/product/${product.order_item_id}`, {qty})
+        .then(results=>{
+            this.getProducts()
+        }).catch(err=>console.log(err))
     }
 
     render(){
         // console.log(this.props)
         const mappedCart = this.state.cart.map((product, i) => {
-            
             return (
-                <div>
-                    <div key={i} className='product-container'>
-                        <img src={product.product_image} alt={product.product_name} className='product-image'/>
-                            <p>{product.product_name}</p>
-                            <p>${product.price*(product.qty)}.00</p>
-                            <p>qty: {product.qty}</p>
-                            {/* <button onClick={() => this.editProduct(product.order_item_id)}>Edit</button> */}
-                            <div className="add-remove">
-                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleAddQuantity(product.order_item_id)}}>+</i></Link>
-                                            <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(product.order_item_id)}}>-</i></Link>
-                                        </div>
-                            <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
-                    </div> 
-                </div>
+                <Edit product={product} key={i} 
+                editProduct={this.editProduct}
+                deleteProduct={this.deleteProduct}/>
+                // <div>
+                //     <div key={i} className='product-container'>
+                //         <img src={product.product_image} alt={product.product_name} className='product-image'/>
+                //             <p>{product.product_name}</p>
+                //             <p>${product.price*(product.qty)}.00</p>
+                //             <p>qty: {product.qty}</p>
+                //             <button onClick={()=>this.editProduct(product.order_item_id)}>Edit</button>
+                //             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
+                //     </div> 
+                // </div>
             )
         })
         return (
@@ -99,7 +94,6 @@ class Cart extends Component {
     }
 }
 
-// const mapStateToProps = reduxState=> reduxState;
 const mapStateToProps = reduxState=> {
     const {user} = reduxState.userReducer
     return {user}

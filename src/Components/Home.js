@@ -5,9 +5,8 @@ import Products from './Products';
 const Home = ()=>(
     <div>
     <div>
-        <img className='about-pic' src='https://images.unsplash.com/photo-1519750783826-e2420f4d687f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60' alt='plants'/>
+        <img className='about-pic' src='https://i.pinimg.com/originals/e5/cd/e8/e5cde894c8cb88be75a5e7eff9ea7d81.png' alt='plants'/>
         <div className='about-words'>
-            <h1>Welcome to BEAUTYBOX</h1>
         </div>
     </div>
         <Products/>

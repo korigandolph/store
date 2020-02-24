@@ -13,7 +13,7 @@ const Footer = props => {
     
         return(
             <div className='footer'>
-                <h3>S U B S C R I B E</h3>
+                <h3 className='subscribe'>S U B S C R I B E</h3>
                 <input 
                 name='email'
                 value={emailInput}
