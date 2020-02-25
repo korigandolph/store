@@ -4,7 +4,7 @@ const mailOptions ={
     from: 'korigandolph@gmail.com',
     to: '',
     subject: 'Thanks for Registering',
-    text: 'Thank you for registering'
+    text: 'Thank you for registering an account with BrightBoxes. We are so excited to have you as a Bright Member. Please feel free to reach out with any questions you may have.'
 }
 
 module.exports ={

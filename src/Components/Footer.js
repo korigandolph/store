@@ -6,10 +6,6 @@ import {connect} from 'react-redux';
 
 const Footer = props => {
     const [emailInput, setEmailInput]= useState('');
-
-    // const handleChange=({name, value})=>{
-    //     this.setState({[name]: value})
-    // }
     
         return(
             <div className='footer'>

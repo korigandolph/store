@@ -1,5 +1,6 @@
 $phone-width: 375px;
 $pink-color: rgb(250, 238, 243);
+$padding: 10px;
 
 .App {
   text-align: center;
@@ -14,19 +15,16 @@ $pink-color: rgb(250, 238, 243);
 }
 
 .bottom-of-cart{
-  padding: 10px;
+  padding: $padding;
 }
 
 .total{
-  padding: 10px;
+  padding: $padding;
 }
 
-.about-words{
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
+.about-w{
+  font-size: larger;
+  padding: 30px;
 }
 
 .product-flex{
@@ -81,6 +79,7 @@ a{
 #mobile-nav{
   display: none;
   font-weight: bold;
+  font-size: 30px;
 }
 
 #dropdown{
@@ -95,6 +94,12 @@ a{
   z-index: 10;
 }
 
+.cust-review{
+  color: white;
+  font-size: larger;
+  padding: 15px;
+  background-color: rgb(215, 128, 173);
+}
 @keyframes open{
   from{
     height: 0px;

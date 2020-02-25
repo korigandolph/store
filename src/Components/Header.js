@@ -18,9 +18,9 @@ class Header extends Component{
         return(
             <header>
                 <nav id='desktop-nav' className='Header'>
-                    <Link to='/'>BEAUTYBOX</Link>
-                    <Link to='/products'>Products</Link>
-                    <Link to='/about'>About</Link>
+                    <Link to='/'>BRIGHTBOXES</Link>
+                    <Link to='/products'>PRODUCTS</Link>
+                    <Link to='/about'>ABOUT</Link>
                     <Link to='/cart'><FaShoppingCart/></Link> 
                 </nav>
                 <nav id='mobile-nav' onClick={this.toggleDropdown} className='mobile-header'>
