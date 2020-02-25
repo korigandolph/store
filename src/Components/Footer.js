@@ -6,9 +6,18 @@ import {connect} from 'react-redux';
 
 const Footer = props => {
     const [emailInput, setEmailInput]= useState('');
+
+const footerStyle={
+    fontWeight: 'bold',
+    fontSize: 25,
+    lineHeight: '1em',
+    color: 'black',
+    justifyContent: 'center',
+    padding: 20
+}
     
         return(
-            <div className='footer'>
+            <div className='footer' style={footerStyle}>
                 <h3 className='subscribe'>S U B S C R I B E</h3>
                 <input 
                 name='email'

@@ -1,30 +1,31 @@
 $phone-width: 375px;
 $pink-color: rgb(250, 238, 243);
-$padding: 10px;
+$font-size: 25px;
+
+@mixin general {
+  padding: 10px;
+  margin: 0;
+}
 
 .App {
   text-align: center;
   background-color:whitesmoke;
 }
-
+.circle{
+  border-radius: 50%;
+  height: 350px;
+  padding-top: 50px;
+}
 .about-pic{
-  height: auto;
   width: 100%;
-  position: relative;
-  text-align: center;
 }
 
 .bottom-of-cart{
-  padding: $padding;
+  @include general
 }
 
 .total{
-  padding: $padding;
-}
-
-.about-w{
-  font-size: larger;
-  padding: 30px;
+  @include general
 }
 
 .product-flex{
@@ -40,21 +41,6 @@ $padding: 10px;
 }
 .footer{
   background-color: $pink-color;
-  padding: 3px;
-}
-
-.product-container{
-  width: 300px;
-}
-
-.product-image{
-  width: 300px;
-}
-
-.auth-modal{
-  width: 150px;
-  height: 100px;
-  margin: 0 auto;
 }
 
 .Header{
@@ -63,11 +49,7 @@ $padding: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 25px;
-}
-
-.subscribe{
-  font-size: 25px;
+  font-size: $font-size;
 }
 
 a{
@@ -76,10 +58,20 @@ a{
   font-weight: bold;
 }
 
+.product-image{
+  width: 350px
+}
+.boxButton {
+  background-color:rgb(215, 128, 173);
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
 #mobile-nav{
   display: none;
-  font-weight: bold;
-  font-size: 30px;
 }
 
 #dropdown{
@@ -91,13 +83,14 @@ a{
   flex-direction: column;
   animation: open 500ms;
   overflow: hidden;
-  z-index: 10;
 }
 
-.cust-review{
+.shipping{
+  background-color: rgb(215, 128, 173);
   color: white;
-  font-size: larger;
-  padding: 15px;
+  padding: 30px;
+}
+.cust-review{
   background-color: rgb(215, 128, 173);
 }
 @keyframes open{

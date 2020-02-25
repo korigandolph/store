@@ -6,7 +6,6 @@ import swal from 'sweetalert';
 import {Link} from 'react-router-dom';
 import {FaShoppingBag} from 'react-icons/fa';
 import Edit from './Edit';
-// import Checkout from './Checkout';
 
 class Cart extends Component {
     constructor(props){
@@ -56,16 +55,6 @@ class Cart extends Component {
                 <Edit product={product} key={i} 
                 editProduct={this.editProduct}
                 deleteProduct={this.deleteProduct}/>
-                // <div>
-                //     <div key={i} className='product-container'>
-                //         <img src={product.product_image} alt={product.product_name} className='product-image'/>
-                //             <p>{product.product_name}</p>
-                //             <p>${product.price*(product.qty)}.00</p>
-                //             <p>qty: {product.qty}</p>
-                //             <button onClick={()=>this.editProduct(product.order_item_id)}>Edit</button>
-                //             <button onClick={() => this.deleteProduct(product.order_item_id)}>Delete</button>
-                //     </div> 
-                // </div>
             )
         })
         return (

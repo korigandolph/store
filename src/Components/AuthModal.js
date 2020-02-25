@@ -25,9 +25,14 @@ const AuthModal = props => {
             console.log(err)})
     }
 
+    const authStyle ={
+        width: 150,
+        height: 100,
+        margin: 0
+    }
 
     return (
-        <div className='auth-modal'>
+        <div className='auth-modal' style={authStyle}>
             <input
                 value={emailInput}
                 placeholder= 'Email'

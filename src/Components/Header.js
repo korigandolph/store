@@ -15,6 +15,10 @@ class Header extends Component{
         this.setState({showDropdown: !this.state.showDropdown})
     }
     render(){
+        const mobileStyle={
+            fontWeight: 'bold',
+            fontSize: 25
+        }
         return(
             <header>
                 <nav id='desktop-nav' className='Header'>
@@ -23,7 +27,7 @@ class Header extends Component{
                     <Link to='/about'>ABOUT</Link>
                     <Link to='/cart'><FaShoppingCart/></Link> 
                 </nav>
-                <nav id='mobile-nav' onClick={this.toggleDropdown} className='mobile-header'>
+                <nav id='mobile-nav' style={mobileStyle} onClick={this.toggleDropdown} className='mobile-header'>
                 BEAUTYBOX
             </nav>
             {this.state.showDropdown ?

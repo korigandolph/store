@@ -12,7 +12,6 @@ class Products extends Component {
             showModal: false
         }
     }
-
     componentDidMount(){
         axios.get('/api/products').then(res => {
             this.setState({products: res.data})
@@ -36,12 +35,15 @@ class Products extends Component {
     handleToggle = () => {
         this.setState({showModal: !this.state.showModal})
     }
-
     render(){
+        const widthStyle ={
+            width: 350
+        }
+
         const mappedProducts = this.state.products.map((product, i) => {
             return (
-               <div key={i} className='product-container'>
-                   <img src={product.product_image} alt={product.product_name} className='product-image'/>
+               <div key={i} className='product-container' style={widthStyle}>
+                   <img src={product.product_image} alt={product.product_name} className='product-image' style={widthStyle}/>
                     <h2>{product.product_name}</h2>
                     <p>{product.product_description}</p>
                     <p>${product.price}</p>
